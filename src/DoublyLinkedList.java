@@ -59,7 +59,12 @@ public class DoublyLinkedList
             }
             //reverse
             System.out.println("\n-------backward --------");
-            for(current = current;current.previous != null;current=current.previous)
+            current = START;
+            while(current.next != null)
+            {
+                current = current.next;
+            }
+            for(;current!= null;current=current.previous)
             {
                 System.out.print(" "+current.data);
             }
@@ -74,7 +79,7 @@ public class DoublyLinkedList
         DoublyLinkedList obj = new DoublyLinkedList();
         while(true)
         {
-            System.out.println("press 1 for insert");
+            System.out.println("\npress 1 for insert");
             System.out.println("press 2 for delete");
             System.out.println("press 3 for traverse");
             System.out.println("press 4 for search");
