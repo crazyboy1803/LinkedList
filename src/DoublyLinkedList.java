@@ -14,7 +14,29 @@ public class DoublyLinkedList
     }
     void addnode()
     {
+        System.out.println("Enter Data");
+        Scanner sc2 = new Scanner(System.in);
+        int item = sc2.nextInt();
         
+        Nodee newnode = new Nodee();
+        newnode.data = item;
+        newnode.previous=null;
+        newnode.next=null;
+        
+        if(START == null)
+        {
+            START = newnode;
+        }
+        else
+        {
+            Nodee current = START;
+            while(current.next!=null)
+            {
+                current=current.next;
+            }
+            current.next=newnode;
+            newnode.previous=current;
+        }
     }
     void deletenode()
     {
@@ -28,7 +50,19 @@ public class DoublyLinkedList
         }
         else
         {
-            
+            System.out.println("-------forward --------");
+            //forward
+            Nodee current;
+            for (current = START;current != null;current=current.next)
+            {
+                System.out.print(" "+current.data);
+            }
+            //reverse
+            System.out.println("\n-------backward --------");
+            for(current = current;current.previous != null;current=current.previous)
+            {
+                System.out.print(" "+current.data);
+            }
         }
     }
     void searchnode()

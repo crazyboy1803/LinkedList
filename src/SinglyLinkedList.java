@@ -57,11 +57,14 @@ public class SinglyLinkedList
         else
         {
             Node current = START;
+            Node SecondLast = null;
             while(current.next != null)
             {
+                SecondLast=current;
                 current = current.next;
             }
-            current.next = null;
+            System.out.println("Deleted element : "+current.rollno);
+            SecondLast.next = null;
         }
     }
     void traversenode()
