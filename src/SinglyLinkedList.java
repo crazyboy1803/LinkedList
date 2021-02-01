@@ -38,7 +38,31 @@ public class SinglyLinkedList
     }
     void deletenode()
     {
-        
+        if(START == null)
+        {
+            System.out.println("List Empty");
+        }
+        else
+        {
+            System.out.println("Deleted : "+START.rollno);
+            START = START.next;
+        }
+    }
+    void deletenodelast()
+    {
+        if(START == null)
+        {
+            System.out.println("List Empty");
+        }
+        else
+        {
+            Node current = START;
+            while(current.next != null)
+            {
+                current = current.next;
+            }
+            current.next = null;
+        }
     }
     void traversenode()
     {
@@ -76,15 +100,15 @@ public class SinglyLinkedList
                     count++;
                     break;
                 }
-                if(count>0)
+            }
+            if(count>0)
                 {
-                    System.out.println("FOund");
+                    System.out.println("Found");
                 }
                 else
                 {
                     System.out.println("Not Found");
                 }
-            }
         }
     }
     public static void main(String arg[])
@@ -92,11 +116,12 @@ public class SinglyLinkedList
         SinglyLinkedList obj = new SinglyLinkedList();
         while(true)
         {
-            System.out.println("press 1 for insert");
+            System.out.println("\npress 1 for insert");
             System.out.println("press 2 for delete");
-            System.out.println("press 3 for traverse");
-            System.out.println("press 4 for search");
-            System.out.println("press 5 for Exit");
+            System.out.println("press 3 for delete from last");
+            System.out.println("press 4 for traverse");
+            System.out.println("press 5 for search");
+            System.out.println("press 6 for Exit");
             
             System.out.println("Enter ur choice");
             Scanner sc = new Scanner(System.in);
@@ -111,12 +136,15 @@ public class SinglyLinkedList
                     obj.deletenode();
                     break;
                 case 3:
-                    obj.traversenode();
+                    obj.deletenodelast();
                     break;
                 case 4:
-                    obj.searchnode();
+                    obj.traversenode();
                     break;
                 case 5:
+                    obj.searchnode();
+                    break;
+                case 6:
                     System.exit(0);
                    break;
                 default:
