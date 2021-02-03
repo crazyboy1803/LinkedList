@@ -87,47 +87,64 @@ public class DoublyLinkedList
     }
     void DeleteFromValue()
     {
+        //to check whether the list is empty or not.
         if(START  == null)
         {
            System.out.println("Doubly Linked List Is Empty");
         }
         else
         {            
+            //if list is not empty the take input the value which we want to delete.
             Scanner sc4 = new Scanner(System.in);
             System.out.println("Enter the value you want to delete");
-            int value = sc4.nextInt();            
+            int value = sc4.nextInt();
+            //counter for whether the value is present or not.
             int count=0;
             Nodee current = START;
+            //loop for check all the elements of linked list.
             while(current.next!=null)
             {
                 if(current.data==value)
                 {
+                    //if the value is present the count will be increased.
                     count++;
                     break;
                 }
                 current=current.next;
             }
+            //this is for checking last element of linked list.
             if(current.data==value)
                 {
                     count++;                    
                 }
             if(count>0)
             {
+                //if counter value will be more than zero the  processing of deleting start.
                 current = START;
                 while(current.data != value)
                 {
+                    //to take the variable current to the node where the value present.
                     current = current.next;            
                 }
+                // to print deleted value.
                 System.out.println("Delete :"+current.data);
-                if(current.previous==null)
+                //for the first value of linked list.
+                if(current.previous==null && current.next!=null)
                 {
                     START =current.next;
                     START.previous = null;
                 }
-                else if(current.next==null)
+                //for the last value of linked list.
+                else if(current.next==null && current.previous!=null)
                 {
                     current.previous.next = null;
+                }        
+                //for only one value present in linked list.
+                else if(current.next==null && current.previous==null)
+                {
+                    START=null;
                 }
+                //for any middle value.
                 else
                 {
                     current.previous.next = current.next;
@@ -135,7 +152,8 @@ public class DoublyLinkedList
                 }
             }
             else
-            {
+            {                
+                //when value is not present.
                 System.out.println("Value Not Found");
             }            
         }
