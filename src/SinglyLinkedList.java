@@ -105,13 +105,13 @@ public class SinglyLinkedList
                 }
             }
             if(count>0)
-                {
-                    System.out.println("Found");
-                }
-                else
-                {
-                    System.out.println("Not Found");
-                }
+            {
+                System.out.println("Found");
+            }
+            else
+            {
+                System.out.println("Not Found");
+            }
         }
     }
     public static void main(String arg[])
