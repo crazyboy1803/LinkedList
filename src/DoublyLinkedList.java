@@ -47,8 +47,15 @@ public class DoublyLinkedList
         else
         {
             System.out.println("Deleted Element : "+START.data);
-            START = START.next;
-            START.previous = null;
+            if(START.next==null)
+            {
+                START=null;
+            }
+            else
+            {
+                START = START.next;
+                START.previous = null;
+            }     
         }
     }
     void deleteFromLast()
@@ -78,21 +85,61 @@ public class DoublyLinkedList
             }
         }        
     }
-    void DeleteFromSearch()
+    void DeleteFromValue()
     {
-        Scanner sc4 = new Scanner(System.in);
-        int value = sc4.nextInt();
-        
-        Nodee current = START;
-        while(current != null)
+        if(START  == null)
         {
-            if(current.data == value)
-            {
-                System.out.println("Value Found");
-                break;
-            }          
-            current = current.next;
+           System.out.println("Doubly Linked List Is Empty");
         }
+        else
+        {            
+            Scanner sc4 = new Scanner(System.in);
+            System.out.println("Enter the value you want to delete");
+            int value = sc4.nextInt();            
+            int count=0;
+            Nodee current = START;
+            while(current.next!=null)
+            {
+                if(current.data==value)
+                {
+                    count++;
+                    break;
+                }
+                current=current.next;
+            }
+            if(current.data==value)
+                {
+                    count++;                    
+                }
+            if(count>0)
+            {
+                current = START;
+                while(current.data != value)
+                {
+                    current = current.next;            
+                }
+                System.out.println("Delete :"+current.data);
+                if(current.previous==null)
+                {
+                    START =current.next;
+                    START.previous = null;
+                }
+                else if(current.next==null)
+                {
+                    current.previous.next = null;
+                }
+                else
+                {
+                    current.previous.next = current.next;
+                    current.next.previous = current.previous;
+                }
+            }
+            else
+            {
+                System.out.println("Value Not Found");
+            }            
+        }
+        
     }
     void traversenode()
     {
@@ -159,7 +206,7 @@ public class DoublyLinkedList
             System.out.println("\npress 1 for insert");
             System.out.println("press 2 for delete");
             System.out.println("press 3 for deleteFromLast");
-            System.out.println("press 4 for deleteFromSearch");
+            System.out.println("press 4 for deleteFromValue");
             System.out.println("press 5 for traverse");
             System.out.println("press 6 for search");
             System.out.println("press 7 for Exit");
@@ -182,7 +229,7 @@ public class DoublyLinkedList
             }
             else if(ch == 4)
             {
-                obj.DeleteFromSearch();
+                obj.DeleteFromValue();
             }
             else if(ch == 5)
             {
