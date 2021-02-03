@@ -59,16 +59,23 @@ public class DoublyLinkedList
         }
         else
         {
-            Nodee current =START ;
-            Nodee Secondlast = null;
-            while(current.next != null)
+            if(START.next == null)
             {
-                Secondlast = current;
-                current = current.next;
+                System.out.println("Deleted Element :"+START.data);
+                START = null;
             }
-            System.out.println("Deleted Element :"+ current.data);
-            current.previous=null;
-            Secondlast.next=null;
+            else
+            {
+                Nodee current =START ;
+                Nodee Secondlast = null;
+                while(current.next != null)
+                {
+                    Secondlast = current;
+                    current = current.next;
+                }
+                System.out.println("Deleted Element :"+ current.data);
+                Secondlast.next=null;
+            }
         }        
     }
     void DeleteFromSearch()
